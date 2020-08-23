@@ -94,10 +94,6 @@ fn main() {
             }
         }
 
-        // TODO: don't delete _any_ files that were accessed w/in the last 15-20 minutes
-        // TODO: if any files exceed max_file_size, be sure to delete them instead of the
-        // less-recently used stuff
-
         // re-query available space in case our capacity has been reduced since we started running the program
         let n_bytes_to_delete = args.target_available_space as i64 - fs2::available_space(&args.path).unwrap() as i64;
         if n_bytes_to_delete > 0 {
