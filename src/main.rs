@@ -75,7 +75,7 @@ fn main() {
                     if accessed < older_than_time && (aggregate_heap_file_size < max_n_bytes_to_delete || accessed <= files_to_delete.peek().unwrap().accessed) {
                         // NOTE: if our aggregate heap file size is above capacity, we _must_ have something
                         // in the heap already
-                        let file = FileInfo { accessed: accessed, size : metadata.len(), path : entry.into_path() };
+                        let file = FileInfo { accessed, size : metadata.len(), path : entry.into_path() };
                         aggregate_heap_file_size += file.size;
                         files_to_delete.push(file);
 
